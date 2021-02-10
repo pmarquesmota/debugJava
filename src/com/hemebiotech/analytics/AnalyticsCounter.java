@@ -3,38 +3,56 @@ package com.hemebiotech.analytics;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileWriter;
+import java.util.HashMap;
+import java.util.HashSet;
 
 public class AnalyticsCounter {
-	private static int headacheCount = 0;	// counts headaches
-	private static int rashCount = 0;	// count rashes
-	private static int pupilCount = 0;	// count dilatated pupils
+	private static HashSet<String> symptomData;
+	private static HashMap<String, Integer> result = new HashMap<String, Integer>();
 	
 	public static void main(String args[]) throws Exception {
 		// first get input
 		BufferedReader reader = new BufferedReader (new FileReader("symptoms.txt"));
 		String line = reader.readLine();
 
+		ISymptomReader symptomReader = new ReadSymptomDataFromFile();
+		symptomReader.InitializeFile("symptomData.txt");
+		
+		symptomData = symptomReader.GetSymptoms();
+		
 		while (line != null) {
 			System.out.println("symptom from file: " + line);
-			if (line.equals("headache")) {
-				headacheCount++;
+			
+			for(String symptom : symptomData) {
+				if(line.contains(symptom)) {
+		            // Get if the element is present 
+		            Integer count = result.get(symptom); 
+		            
+		            // If this is first occurrence of element 
+		            // Insert the element 
+		            if (c == null) { 
+		            	result.put(symptom, 1); 
+		  
+		            // If elements already exists in hash map 
+		            // Increment the count of element by 1 
+					} else { 
+		            	result.put(symptom, ++count); 
+		            } 
+				}
 			}
-			else if (line.equals("rash")) {
-				rashCount++;
-			}
-			else if (line.contains("pupils")) {
-				pupilCount++;
-			}
-
+			
 			line = reader.readLine();	// get another symptom
 		}
 		reader.close();
 		
 		// next generate output
 		FileWriter writer = new FileWriter ("result.out");
-		writer.write("headache: " + headacheCount + "\n");
-		writer.write("rash: " + rashCount + "\n");
-		writer.write("dilatated pupils: " + pupilCount + "\n");
+
+		// Loop through the result hash table to write its content to the file
+		for (String i : result.keySet()) {
+			writer.write(i + ": " + result.get(i) + "\n");
+		}
+
 		writer.close();
 	}
 }
