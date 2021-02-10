@@ -20,14 +20,13 @@ public class DoMainLoop implements IMainLoop {
 		// Check if the element is present
 		Integer count = h.get(s);
 
-		// If this is first occurrence of element
-		// Insert the element
 		if (count == null) {
+			// If this is first occurrence of element
+			// Insert the element
 			h.put(s, 1);
-
+		} else {
 			// If elements already exists in hash map
 			// Increment the count of element by 1
-		} else {
 			h.put(s, ++count);
 		}
 		return h;
