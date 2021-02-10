@@ -25,12 +25,12 @@ public class AnalyticsCounter {
 			
 			for(String symptom : symptomData) {
 				if(line.contains(symptom)) {
-		            // Get if the element is present 
+		            // Check if the element is present 
 		            Integer count = result.get(symptom); 
 		            
 		            // If this is first occurrence of element 
 		            // Insert the element 
-		            if (c == null) { 
+		            if (count == null) { 
 		            	result.put(symptom, 1); 
 		  
 		            // If elements already exists in hash map 
