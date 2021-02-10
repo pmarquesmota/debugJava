@@ -1,66 +1,78 @@
 package com.hemebiotech.analytics;
 
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.HashSet;
 
-public class DoMainLoop implements IMainLoop{
-	private String filepath;
-
+public class DoMainLoop implements IMainLoop {
+	private static String filepath;
+	private static BufferedReader reader;
+	private static HashSet<String> symptomData;
+	private static HashMap<String, Integer> result = new HashMap<String, Integer>();
+	
 	public void InitializeFile(String filepath) {
 		this.filepath = filepath;
 	}
 
-	public HashMap<String, Integer> MainLoop() {
-		BufferedReader reader;
-		HashSet<String> symptomData;
-		HashMap<String, Integer> result = new HashMap<String, Integer>();
+	public static HashMap<String, Integer> PutSymptom(HashMap<String, Integer> h, String s) {
+		// Check if the element is present
+		Integer count = h.get(s);
 
+		// If this is first occurrence of element
+		// Insert the element
+		if (count == null) {
+			h.put(s, 1);
+
+			// If elements already exists in hash map
+			// Increment the count of element by 1
+		} else {
+			h.put(s, ++count);
+		}
+		return h;
+	}
+
+	public static void loop() {
+		String line;
 		try {
-			// first get input
-			reader = new BufferedReader(new FileReader(filepath));
-			String line = reader.readLine();
-
-			ISymptomReader symptomReader = new ReadSymptomDataFromFile();
-			symptomReader.InitializeFile("symptomData.txt");
-
-			symptomData = symptomReader.GetSymptoms();
+			line = reader.readLine();
 
 			while (line != null) {
 				System.out.println("symptom from file: " + line);
 
 				for (String symptom : symptomData) {
 					if (line.contains(symptom)) {
-						// Check if the element is present
-						Integer count = result.get(symptom);
-
-						// If this is first occurrence of element
-						// Insert the element
-						if (count == null) {
-							result.put(symptom, 1);
-
-							// If elements already exists in hash map
-							// Increment the count of element by 1
-						} else {
-							result.put(symptom, ++count);
-						}
+						PutSymptom(result, symptom);
 					}
 				}
 
 				line = reader.readLine(); // get another symptom
 			}
-			reader.close();
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
 
+	public HashMap<String, Integer> MainLoop() {
+
+		try {
+			// first get input
+			if(filepath == null) {
+				throw new Exception("You must initialize the file with the list of symptoms.");
+			}
+			reader = new BufferedReader(new FileReader(filepath));
+
+			ISymptomReader symptomReader = new ReadSymptomDataFromFile();
+			symptomReader.InitializeFile("symptomData.txt");
+
+			symptomData = symptomReader.GetSymptoms();
+			loop();
+			reader.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
 		return result;
 	}
 }
