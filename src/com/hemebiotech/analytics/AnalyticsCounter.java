@@ -2,7 +2,6 @@ package com.hemebiotech.analytics;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
-import java.io.FileWriter;
 import java.util.HashMap;
 import java.util.HashSet;
 
@@ -45,14 +44,8 @@ public class AnalyticsCounter {
 		}
 		reader.close();
 		
-		// next generate output
-		FileWriter writer = new FileWriter ("result.out");
-
-		// Loop through the result hash table to write its content to the file
-		for (String i : result.keySet()) {
-			writer.write(i + ": " + result.get(i) + "\n");
-		}
-
-		writer.close();
+		IWriteFile writeFile = new WriteToFile();
+		writeFile.InitializeFile("result.out");
+		writeFile.WriteFile(result);
 	}
 }
