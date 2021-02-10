@@ -10,6 +10,15 @@ import java.util.HashSet;
  * 
  */
 public interface ISymptomReader {
+	
+	/**
+	 * Initialize the file name to read the symptoms from
+	 * 
+	 * @param filepath a full or partial path to file with symptom strings in it, one per line
+	 * @return 
+	 */
+	void InitializeFile (String filepath);
+	
 	/**
 	 * If no data is available, return an empty List
 	 * 
