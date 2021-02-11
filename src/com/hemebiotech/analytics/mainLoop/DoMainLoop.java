@@ -16,7 +16,7 @@ import com.hemebiotech.analytics.symptomReader.ReadSymptomDataFromFile;
  *
  */
 public class DoMainLoop implements IMainLoop {
-	private static String filepath; // input file
+	private static String inputFile;
 	private static BufferedReader reader;
 	private static HashSet<String> symptomData;
 	private static TreeMap<String, Integer> result = new TreeMap<String, Integer>();
@@ -24,31 +24,31 @@ public class DoMainLoop implements IMainLoop {
 	/**
 	 * Initialize the input file.
 	 */
-	public void InitializeFile(String filepath) {
-		this.filepath = filepath;
+	public void InitializeFile(String inputFile) {
+		this.inputFile = inputFile;
 	}
 
 	/**
 	 * Put a symptom into the result TreeMap and update its count
 	 * 
-	 * @param h the TreeMap to modify
+	 * @param t the TreeMap to modify
 	 * @param s the String to add to the TreeMap
 	 * @return the modified TreeMap
 	 */
-	public static TreeMap<String, Integer> PutSymptom(TreeMap<String, Integer> h, String s) {
+	public static TreeMap<String, Integer> PutSymptom(TreeMap<String, Integer> t, String s) {
 		// Check if the element is present
-		Integer count = h.get(s);
+		Integer count = t.get(s);
 
 		if (count == null) {
 			// If this is first occurrence of element
 			// Insert the element
-			h.put(s, 1);
+			t.put(s, 1);
 		} else {
 			// If elements already exists in hash map
 			// Increment the count of element by 1
-			h.put(s, ++count);
+			t.put(s, ++count);
 		}
-		return h;
+		return t;
 	}
 	
 	/**
@@ -93,10 +93,10 @@ public class DoMainLoop implements IMainLoop {
 	public TreeMap<String, Integer> MainLoop() {
 		try {
 			// first get input
-			if (filepath == null) {
+			if (inputFile == null) {
 				throw new Exception("You must initialize the input file.");
 			}
-			reader = new BufferedReader(new FileReader(filepath));
+			reader = new BufferedReader(new FileReader(inputFile));
 
 			ISymptomReader symptomReader = new ReadSymptomDataFromFile();
 			symptomReader.InitializeFile("symptomData.txt");
