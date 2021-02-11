@@ -21,6 +21,9 @@ public class DoMainLoop implements IMainLoop {
 	private static HashSet<String> symptomData;
 	private static TreeMap<String, Integer> result = new TreeMap<String, Integer>();
 
+	/**
+	 * Initialize the input file.
+	 */
 	public void InitializeFile(String filepath) {
 		this.filepath = filepath;
 	}
