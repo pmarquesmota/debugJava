@@ -15,19 +15,18 @@ public class WriteToFile implements IWriteFile {
 		// Generate output
 		FileWriter writer;
 		try {
-			if(filepath != null) {
-				writer = new FileWriter(filepath);
-				// Loop through the result hash table to write its content to the file
-				for (String i : result.keySet()) {
-					writer.write(i + ": " + result.get(i) + "\n");
-				}
-
-				writer.close();
+			if (filepath == null) {
+				throw new Exception("You must initialize the output file.");
 			}
-		} catch (IOException e) {
+			writer = new FileWriter(filepath);
+			// Loop through the result hash table to write its content to the file
+			for (String i : result.keySet()) {
+				writer.write(i + ": " + result.get(i) + "\n");
+			}
+			writer.close();
+
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
 	}
-
 }

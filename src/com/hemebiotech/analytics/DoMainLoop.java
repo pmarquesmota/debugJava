@@ -58,7 +58,7 @@ public class DoMainLoop implements IMainLoop {
 		try {
 			// first get input
 			if(filepath == null) {
-				throw new Exception("You must initialize the file with the list of symptoms.");
+				throw new Exception("You must initialize the input file.");
 			}
 			reader = new BufferedReader(new FileReader(filepath));
 

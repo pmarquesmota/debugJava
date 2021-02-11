@@ -12,35 +12,37 @@ import java.util.HashSet;
 public class ReadSymptomDataFromFile implements ISymptomReader {
 
 	private String filepath;
-	
+
 	/**
 	 * 
-	 * @param filepath a full or partial path to file with symptom strings in it, one per line
-	 * @return 
+	 * @param filepath a full or partial path to file with symptom strings in it,
+	 *                 one per line
+	 * @return
 	 */
-	public void InitializeFile (String filepath) {
+	public void InitializeFile(String filepath) {
 		this.filepath = filepath;
 	}
-	
+
 	@Override
 	public HashSet<String> GetSymptoms() {
 		HashSet<String> result = new HashSet<String>();
-		
-		if (filepath != null) {
-			try {
-				BufferedReader reader = new BufferedReader (new FileReader(filepath));
-				String line = reader.readLine();
-				
-				while (line != null) {
-					result.add(line);
-					line = reader.readLine();
-				}
-				reader.close();
-			} catch (IOException e) {
-				e.printStackTrace();
+
+		try {
+			if (filepath == null) {
+				throw new Exception("You must initialize the file with the list of symptoms.");
 			}
+			BufferedReader reader = new BufferedReader(new FileReader(filepath));
+			String line = reader.readLine();
+
+			while (line != null) {
+				result.add(line);
+				line = reader.readLine();
+			}
+			reader.close();
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
-		
+
 		return result;
 	}
 
