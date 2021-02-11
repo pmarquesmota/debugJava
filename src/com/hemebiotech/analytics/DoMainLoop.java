@@ -53,8 +53,13 @@ public class DoMainLoop implements IMainLoop {
 		}
 	}
 
-	public TreeMap<String, Integer> MainLoop() {
+	private void initializeResult() {
+		for(String symptom:symptomData) {
+			result.put(symptom, 0);
+		}
+	}
 
+	public TreeMap<String, Integer> MainLoop() {
 		try {
 			// first get input
 			if(filepath == null) {
@@ -66,12 +71,13 @@ public class DoMainLoop implements IMainLoop {
 			symptomReader.InitializeFile("symptomData.txt");
 
 			symptomData = symptomReader.GetSymptoms();
+			initializeResult();
 			loop();
 			reader.close();
 		} catch (Exception e) {
 			e.printStackTrace();
-		}
-		
+		}	
 		return result;
 	}
+
 }
