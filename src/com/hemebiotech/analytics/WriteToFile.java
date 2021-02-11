@@ -2,7 +2,7 @@ package com.hemebiotech.analytics;
 
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.HashMap;
+import java.util.TreeMap;
 
 public class WriteToFile implements IWriteFile {
 	private String filepath;
@@ -11,7 +11,7 @@ public class WriteToFile implements IWriteFile {
 		this.filepath = filepath;
 	}
 
-	public void WriteFile(HashMap<String, Integer> result) {
+	public void WriteFile(TreeMap<String, Integer> result) {
 		// Generate output
 		FileWriter writer;
 		try {
@@ -25,7 +25,6 @@ public class WriteToFile implements IWriteFile {
 				writer.close();
 			}
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 

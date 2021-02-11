@@ -1,8 +1,8 @@
 package com.hemebiotech.analytics;
 
-import java.util.HashMap;
+import java.util.TreeMap;
 
 public interface IMainLoop {
 	void InitializeFile (String filepath);
-	HashMap<String, Integer> MainLoop();
+	TreeMap<String, Integer> MainLoop();
 }

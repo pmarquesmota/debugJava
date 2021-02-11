@@ -3,20 +3,20 @@ package com.hemebiotech.analytics;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.HashMap;
 import java.util.HashSet;
+import java.util.TreeMap;
 
 public class DoMainLoop implements IMainLoop {
-	private static String filepath;
+	private static String filepath;		// input file
 	private static BufferedReader reader;
 	private static HashSet<String> symptomData;
-	private static HashMap<String, Integer> result = new HashMap<String, Integer>();
+	private static TreeMap<String, Integer> result = new TreeMap<String, Integer>();
 	
 	public void InitializeFile(String filepath) {
 		this.filepath = filepath;
 	}
 
-	public static HashMap<String, Integer> PutSymptom(HashMap<String, Integer> h, String s) {
+	public static TreeMap<String, Integer> PutSymptom(TreeMap<String, Integer> h, String s) {
 		// Check if the element is present
 		Integer count = h.get(s);
 
@@ -53,7 +53,7 @@ public class DoMainLoop implements IMainLoop {
 		}
 	}
 
-	public HashMap<String, Integer> MainLoop() {
+	public TreeMap<String, Integer> MainLoop() {
 
 		try {
 			// first get input

@@ -1,8 +1,8 @@
 package com.hemebiotech.analytics;
 
-import java.util.HashMap;
+import java.util.TreeMap;
 
 public interface IWriteFile {
 	void InitializeFile (String filepath);
-	void WriteFile(HashMap<String, Integer> result);
+	void WriteFile(TreeMap<String, Integer> result);
 }

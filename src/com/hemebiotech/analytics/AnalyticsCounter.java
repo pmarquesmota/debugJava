@@ -1,11 +1,11 @@
 package com.hemebiotech.analytics;
 
-import java.util.HashMap;
+import java.util.TreeMap;
 
 public class AnalyticsCounter {
 	
 	public static void main(String args[]) throws Exception {
-		HashMap<String, Integer> result = new HashMap<String, Integer>();
+		TreeMap<String, Integer> result = new TreeMap<String, Integer>();
 		
 		IMainLoop loop = new DoMainLoop();
 		loop.InitializeFile("symptoms.txt");
