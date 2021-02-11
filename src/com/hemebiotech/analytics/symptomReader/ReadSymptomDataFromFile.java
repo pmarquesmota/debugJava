@@ -23,6 +23,12 @@ public class ReadSymptomDataFromFile implements ISymptomReader {
 		this.filepath = filepath;
 	}
 
+	/**
+	 * 
+	 * Get the list of symptoms to find from the symptomData.txt file
+	 * 
+	 * @return a set of symptoms to find
+	 */
 	@Override
 	public HashSet<String> GetSymptoms() {
 		HashSet<String> result = new HashSet<String>();
