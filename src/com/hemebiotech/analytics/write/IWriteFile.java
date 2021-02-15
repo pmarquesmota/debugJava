@@ -8,6 +8,6 @@ import java.util.TreeMap;
  *
  */
 public interface IWriteFile {
-	void InitializeFile (String inputFile);
+	void InitializeFile (String outputFile);
 	void WriteFile(TreeMap<String, Integer> result);
 }
