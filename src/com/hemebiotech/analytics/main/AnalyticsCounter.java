@@ -9,6 +9,10 @@ import com.hemebiotech.analytics.write.WriteToFile;
 
 public class AnalyticsCounter {
 	
+	/**
+	 * 
+	 * Main method. Calls the main loop method then the method that writes the result to the output file
+	 */
 	public static void main(String args[]) throws Exception {
 		TreeMap<String, Integer> result = new TreeMap<String, Integer>();
 		
