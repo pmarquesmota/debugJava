@@ -29,7 +29,7 @@ public class DoMainLoop implements IMainLoop {
 	}
 
 	/**
-	 * Put a symptom into the result TreeMap and update its count
+	 * Put a symptom into the TreeMap and update its count
 	 * 
 	 * @param t the TreeMap to modify
 	 * @param s the String to add to the TreeMap
