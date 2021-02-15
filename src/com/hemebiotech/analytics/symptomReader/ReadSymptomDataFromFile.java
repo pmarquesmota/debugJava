@@ -11,7 +11,7 @@ import java.util.HashSet;
  */
 public class ReadSymptomDataFromFile implements ISymptomReader {
 
-	private String filepath;
+	private String symptomDataFile;
 
 	/**
 	 * 
@@ -19,8 +19,8 @@ public class ReadSymptomDataFromFile implements ISymptomReader {
 	 *                 one per line
 	 * @return
 	 */
-	public void InitializeFile(String filepath) {
-		this.filepath = filepath;
+	public void InitializeFile(String symptomDataFile) {
+		this.symptomDataFile = symptomDataFile;
 	}
 
 	/**
@@ -34,10 +34,10 @@ public class ReadSymptomDataFromFile implements ISymptomReader {
 		HashSet<String> result = new HashSet<String>();
 
 		try {
-			if (filepath == null) {
+			if (symptomDataFile == null) {
 				throw new Exception("You must initialize the file with the list of symptoms.");
 			}
-			BufferedReader reader = new BufferedReader(new FileReader(filepath));
+			BufferedReader reader = new BufferedReader(new FileReader(symptomDataFile));
 			String line = reader.readLine();
 
 			while (line != null) {

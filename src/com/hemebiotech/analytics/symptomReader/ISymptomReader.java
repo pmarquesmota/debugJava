@@ -17,7 +17,7 @@ public interface ISymptomReader {
 	 * @param filepath a full or partial path to file with symptom strings in it, one per line
 	 * @return 
 	 */
-	void InitializeFile (String filepath);
+	void InitializeFile (String symptomDataFile);
 	
 	/**
 	 * If no data is available, return an empty List
