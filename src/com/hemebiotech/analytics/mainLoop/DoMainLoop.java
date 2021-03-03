@@ -90,7 +90,7 @@ public class DoMainLoop implements IMainLoop {
 	 * 
 	 * @return the resulting TreeMap to be written to the output file
 	 */
-	public TreeMap<String, Integer> mainLoop() {
+	public TreeMap<String, Integer> extractSymptoms() {
 		try {
 			// first get input
 			if (inputFile == null) {

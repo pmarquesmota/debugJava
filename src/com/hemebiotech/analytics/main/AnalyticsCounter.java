@@ -18,7 +18,7 @@ public class AnalyticsCounter {
 		
 		IMainLoop loop = new DoMainLoop();
 		loop.initializeFile("symptoms.txt");
-		result = loop.mainLoop();
+		result = loop.extractSymptoms();
 		
 		IWriteFile writeFile = new WriteToFile();
 		writeFile.initializeFile("result.out");

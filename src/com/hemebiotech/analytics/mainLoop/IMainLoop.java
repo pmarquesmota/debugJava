@@ -9,5 +9,5 @@ import java.util.TreeMap;
  */
 public interface IMainLoop {
 	void initializeFile (String inputFile);
-	TreeMap<String, Integer> mainLoop();
+	TreeMap<String, Integer> extractSymptoms();
 }
