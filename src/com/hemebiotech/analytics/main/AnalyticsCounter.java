@@ -17,11 +17,12 @@ public class AnalyticsCounter {
 		TreeMap<String, Integer> result = new TreeMap<String, Integer>();
 		
 		IMainLoop loop = new DoMainLoop();
-		loop.InitializeFile("symptoms.txt");
-		result = loop.MainLoop();
+		loop.initializeFile("symptoms.txt");
+		result = loop.mainLoop();
 		
 		IWriteFile writeFile = new WriteToFile();
-		writeFile.InitializeFile("result.out");
-		writeFile.WriteFile(result);
+		writeFile.initializeFile("result.out");
+		writeFile.writeFile(result);
 	}
+	
 }

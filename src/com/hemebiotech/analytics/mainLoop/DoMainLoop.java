@@ -16,15 +16,15 @@ import com.hemebiotech.analytics.symptomReader.ReadSymptomDataFromFile;
  *
  */
 public class DoMainLoop implements IMainLoop {
-	private static String inputFile;
-	private static BufferedReader reader;
-	private static HashSet<String> symptomData;
-	private static TreeMap<String, Integer> result = new TreeMap<String, Integer>();
+	private  String inputFile;
+	private  BufferedReader reader;
+	private  HashSet<String> symptomData;
+	private  TreeMap<String, Integer> result = new TreeMap<String, Integer>();
 
 	/**
 	 * Initialize the input file.
 	 */
-	public void InitializeFile(String inputFile) {
+	public void initializeFile(String inputFile) {
 		this.inputFile = inputFile;
 	}
 
@@ -35,7 +35,7 @@ public class DoMainLoop implements IMainLoop {
 	 * @param s the String to add to the TreeMap
 	 * @return the modified TreeMap
 	 */
-	public static TreeMap<String, Integer> PutSymptom(TreeMap<String, Integer> t, String s) {
+	public static TreeMap<String, Integer> putSymptom(TreeMap<String, Integer> t, String s) {
 		// Check if the element is present
 		Integer count = t.get(s);
 
@@ -54,7 +54,7 @@ public class DoMainLoop implements IMainLoop {
 	/**
 	 * The main loop. Loop over the input file and search for the keywords from symptomData
 	 */
-	public static void loop() {
+	public void loop() {
 		String line;
 		try {
 			line = reader.readLine();
@@ -64,7 +64,7 @@ public class DoMainLoop implements IMainLoop {
 
 				for (String symptom : symptomData) {
 					if (line.contains(symptom)) {
-						PutSymptom(result, symptom);
+						putSymptom(result, symptom);
 					}
 				}
 
@@ -90,7 +90,7 @@ public class DoMainLoop implements IMainLoop {
 	 * 
 	 * @return the resulting TreeMap to be written to the output file
 	 */
-	public TreeMap<String, Integer> MainLoop() {
+	public TreeMap<String, Integer> mainLoop() {
 		try {
 			// first get input
 			if (inputFile == null) {
@@ -99,9 +99,9 @@ public class DoMainLoop implements IMainLoop {
 			reader = new BufferedReader(new FileReader(inputFile));
 
 			ISymptomReader symptomReader = new ReadSymptomDataFromFile();
-			symptomReader.InitializeFile("symptomData.txt");
+			symptomReader.initializeFile("symptomData.txt");
 
-			symptomData = symptomReader.GetSymptoms();
+			symptomData = symptomReader.getSymptoms();
 			initializeResult();
 			loop();
 			reader.close();

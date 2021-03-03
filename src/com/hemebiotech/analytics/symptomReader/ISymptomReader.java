@@ -17,12 +17,12 @@ public interface ISymptomReader {
 	 * @param filepath a full or partial path to file with symptom strings in it, one per line
 	 * @return 
 	 */
-	void InitializeFile (String symptomDataFile);
+	void initializeFile (String symptomDataFile);
 	
 	/**
 	 * If no data is available, return an empty List
 	 * 
 	 * @return a raw listing of all Symptoms obtained from a data source
 	 */
-	HashSet<String> GetSymptoms ();
+	HashSet<String> getSymptoms ();
 }

@@ -6,11 +6,11 @@ import java.util.TreeMap;
 public class WriteToFile implements IWriteFile {
 	private String outputFile;
 
-	public void InitializeFile(String outputFile) {
+	public void initializeFile(String outputFile) {
 		this.outputFile = outputFile;
 	}
 
-	public void WriteFile(TreeMap<String, Integer> result) {
+	public void writeFile(TreeMap<String, Integer> result) {
 		// Generate output
 		FileWriter writer;
 		try {

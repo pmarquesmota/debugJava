@@ -18,7 +18,7 @@ public class ReadSymptomDataFromFile implements ISymptomReader {
 	 *                 one per line
 	 * @return
 	 */
-	public void InitializeFile(String symptomDataFile) {
+	public void initializeFile(String symptomDataFile) {
 		this.symptomDataFile = symptomDataFile;
 	}
 
@@ -29,7 +29,7 @@ public class ReadSymptomDataFromFile implements ISymptomReader {
 	 * @return a set of symptoms to find
 	 */
 	@Override
-	public HashSet<String> GetSymptoms() {
+	public HashSet<String> getSymptoms() {
 		HashSet<String> result = new HashSet<String>();
 
 		try {

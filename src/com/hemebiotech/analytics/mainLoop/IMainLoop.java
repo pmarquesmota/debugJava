@@ -8,6 +8,6 @@ import java.util.TreeMap;
  *
  */
 public interface IMainLoop {
-	void InitializeFile (String inputFile);
-	TreeMap<String, Integer> MainLoop();
+	void initializeFile (String inputFile);
+	TreeMap<String, Integer> mainLoop();
 }
