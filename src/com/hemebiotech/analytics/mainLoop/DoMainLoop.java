@@ -31,24 +31,24 @@ public class DoMainLoop implements IMainLoop {
 	/**
 	 * Put a symptom into the TreeMap and update its count
 	 * 
-	 * @param t the TreeMap to modify
-	 * @param s the String to add to the TreeMap
+	 * @param tree the TreeMap to modify
+	 * @param symptom the String to add to the TreeMap
 	 * @return the modified TreeMap
 	 */
-	public static TreeMap<String, Integer> putSymptom(TreeMap<String, Integer> t, String s) {
+	public static TreeMap<String, Integer> putSymptom(TreeMap<String, Integer> tree, String symptom) {
 		// Check if the element is present
-		Integer count = t.get(s);
+		Integer count = tree.get(symptom);
 
 		if (count == null) {
 			// If this is first occurrence of element
 			// Insert the element
-			t.put(s, 1);
+			tree.put(symptom, 1);
 		} else {
 			// If elements already exists in hash map
 			// Increment the count of element by 1
-			t.put(s, ++count);
+			tree.put(symptom, ++count);
 		}
-		return t;
+		return tree;
 	}
 	
 	/**
