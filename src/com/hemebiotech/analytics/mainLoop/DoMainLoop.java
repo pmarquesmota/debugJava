@@ -35,7 +35,7 @@ public class DoMainLoop implements IMainLoop {
 	 * @param symptom the String to add to the TreeMap
 	 * @return the modified TreeMap
 	 */
-	public static TreeMap<String, Integer> putSymptom(TreeMap<String, Integer> tree, String symptom) {
+	public TreeMap<String, Integer> putSymptom(TreeMap<String, Integer> tree, String symptom) {
 		// Check if the element is present
 		Integer count = tree.get(symptom);
 
